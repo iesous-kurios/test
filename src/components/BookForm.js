@@ -7,18 +7,17 @@ const BookForm = (props) => {
     return {
       bookname: props.book ? props.book.bookname : '',
       author: props.book ? props.book.author : '',
-      quantity: props.book ? props.book.quantity : '',
-      price: props.book ? props.book.price : '',
+      address: props.address ? props.book.address : '',
       date: props.book ? props.book.date : ''
     };
   });
 
   const [errorMsg, setErrorMsg] = useState('');
-  const { bookname, author, price, quantity } = book;
+  const { bookname, author, address } = book;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [bookname, author, price, quantity];
+    const values = [bookname, author, address];
     let errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
@@ -31,8 +30,8 @@ const BookForm = (props) => {
         id: uuidv4(),
         bookname,
         author,
-        price,
-        quantity,
+        address,
+       
         date: new Date()
       };
       props.handleOnSubmit(book);
@@ -74,49 +73,40 @@ const BookForm = (props) => {
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
       <Form onSubmit={handleOnSubmit}>
         <Form.Group controlId="name">
-          <Form.Label>Book Name</Form.Label>
+          <Form.Label>Organization Name</Form.Label>
           <Form.Control
             className="input-control"
             type="text"
             name="bookname"
             value={bookname}
-            placeholder="Enter name of book"
+            placeholder="Enter name of Organization You represent"
             onChange={handleInputChange}
           />
         </Form.Group>
         <Form.Group controlId="author">
-          <Form.Label>Book Author</Form.Label>
+          <Form.Label>Person Of Interest</Form.Label>
           <Form.Control
             className="input-control"
             type="text"
             name="author"
             value={author}
-            placeholder="Enter name of author"
+            placeholder="Enter name of person of interest"
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group controlId="quantity">
-          <Form.Label>Quantity</Form.Label>
-          <Form.Control
-            className="input-control"
-            type="number"
-            name="quantity"
-            value={quantity}
-            placeholder="Enter available quantity"
-            onChange={handleInputChange}
-          />
-        </Form.Group>
-        <Form.Group controlId="price">
-          <Form.Label>Book Price</Form.Label>
+        <Form.Group controlId="address">
+          <Form.Label>Address</Form.Label>
           <Form.Control
             className="input-control"
             type="text"
-            name="price"
-            value={price}
-            placeholder="Enter price of book"
+            name="address"
+            value={address}
+            placeholder="Enter Address for Person of Interest"
             onChange={handleInputChange}
           />
         </Form.Group>
+      
+       
         <Button variant="primary" type="submit" className="submit-btn">
           Submit
         </Button>

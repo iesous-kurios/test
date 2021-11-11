@@ -6,8 +6,7 @@ const Book = ({
   id,
   bookname,
   author,
-  price,
-  quantity,
+  address,
   date,
   handleRemoveBook
 }) => {
@@ -18,9 +17,8 @@ const Book = ({
       <Card.Body>
         <Card.Title className="book-title">{bookname}</Card.Title>
         <div className="book-details">
-          <div>Author: {author}</div>
-          <div>Quantity: {quantity} </div>
-          <div>Price: {price} </div>
+          <div>Person of Interest: {author}</div>
+          <div>Address: {address} </div>
           <div>Date: {new Date(date).toDateString()}</div>
         </div>
         <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>
